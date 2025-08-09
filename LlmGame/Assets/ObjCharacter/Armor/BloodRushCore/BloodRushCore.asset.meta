@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/BloodRushCore/BloodRushCore.asset.meta
 guid: 313e263cb0c775c489012d4efc580f03
+========
+guid: bacaa1c7b2d4c6b4a95770244dd0eecd
+>>>>>>>> main:LlmGame/Assets/ObjCharacter/Action/Antidote.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

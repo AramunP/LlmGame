@@ -3,6 +3,7 @@
 { "pid": 35942, "tid": 1, "ph": "M", "name": "thread_name", "args": { "name": "" } },
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 { "pid": 35942, "tid": 1, "ts": 1753681869581220, "dur": 236246, "ph": "X", "name": "BuildProgram", "args": {} },
 { "pid": 35942, "tid": 1, "ts": 1753681869582478, "dur": 77247, "ph": "X", "name": "BuildProgramContextConstructor", "args": {} },
 { "pid": 35942, "tid": 1, "ts": 1753681869785611, "dur": 6563, "ph": "X", "name": "OutputData.Write", "args": {} },
@@ -13,6 +14,8 @@
 =======
 =======
 >>>>>>> main
+=======
+>>>>>>> main
 { "pid": 35942, "tid": 1, "ts": 1754723222581683, "dur": 256182, "ph": "X", "name": "BuildProgram", "args": {} },
 { "pid": 35942, "tid": 1, "ts": 1754723222583031, "dur": 73116, "ph": "X", "name": "BuildProgramContextConstructor", "args": {} },
 { "pid": 35942, "tid": 1, "ts": 1754723222806277, "dur": 4672, "ph": "X", "name": "OutputData.Write", "args": {} },
@@ -21,6 +24,9 @@
 { "pid": 35942, "tid": 1, "ts": 1754723222844897, "dur": 1432, "ph": "X", "name": "", "args": {} },
 { "pid": 35942, "tid": 1, "ts": 1754723222844312, "dur": 2295, "ph": "X", "name": "Write chrome-trace events", "args": {} },
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main

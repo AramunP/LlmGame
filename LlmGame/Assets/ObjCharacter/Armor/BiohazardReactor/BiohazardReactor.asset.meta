@@ -1,9 +1,17 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/BiohazardReactor/BiohazardReactor.asset.meta
 guid: c0fdf94b7bf3c8544837148286b22ecc
 ========
 guid: a1022bfd053e447458174a55d8c87f3e
 >>>>>>>> main:LlmGame/Assets/ObjCharacter/Action/Energy Shield.asset.meta
+=======
+<<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/Auto-Injector Arms/Auto-Injector Arms.asset.meta
+guid: 54f02d278d7cfaa419f31c1ab90a3a26
+========
+guid: c0fdf94b7bf3c8544837148286b22ecc
+>>>>>>>> main:LlmGame/Assets/ObjCharacter/Armor/BiohazardReactor/BiohazardReactor.asset.meta
+>>>>>>> main
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
