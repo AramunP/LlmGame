@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Action/Energy Shield.asset.meta
 guid: a1022bfd053e447458174a55d8c87f3e
 ========
@@ -8,6 +9,13 @@ guid: bacaa1c7b2d4c6b4a95770244dd0eecd
 =======
 <<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/CombatHUDProcessor/CombatHUDProcessor.asset.meta
 guid: c1540f9bb875af3418fd70dcad578a81
+========
+guid: a1022bfd053e447458174a55d8c87f3e
+>>>>>>>> main:LlmGame/Assets/ObjCharacter/Action/Energy Shield.asset.meta
+>>>>>>> main
+=======
+<<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/Heavy Armor.asset.meta
+guid: ffe5459b321e83a45be1ca79611b050b
 ========
 guid: a1022bfd053e447458174a55d8c87f3e
 >>>>>>>> main:LlmGame/Assets/ObjCharacter/Action/Energy Shield.asset.meta

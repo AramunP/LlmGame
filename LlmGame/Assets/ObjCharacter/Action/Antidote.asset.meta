@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Action/Antidote.asset.meta
 guid: bacaa1c7b2d4c6b4a95770244dd0eecd
 ========
@@ -8,6 +9,13 @@ guid: c0fdf94b7bf3c8544837148286b22ecc
 =======
 <<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/BloodRushCore/BloodRushCore.asset.meta
 guid: 313e263cb0c775c489012d4efc580f03
+========
+guid: bacaa1c7b2d4c6b4a95770244dd0eecd
+>>>>>>>> main:LlmGame/Assets/ObjCharacter/Action/Antidote.asset.meta
+>>>>>>> main
+=======
+<<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/GyroStabilizedFeet/GyroStabilizedFeet.asset.meta
+guid: df8a1b44e7b39814eb684bc1b8b4b98a
 ========
 guid: bacaa1c7b2d4c6b4a95770244dd0eecd
 >>>>>>>> main:LlmGame/Assets/ObjCharacter/Action/Antidote.asset.meta
