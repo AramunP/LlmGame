@@ -31,38 +31,66 @@ public class BodyPartData : ScriptableObject
 
     public bool IsDestroyed => health <= 0;
 
-    public void ApplyDamage(int totalDamage, bool hasReduce = true)
+    public void ApplyDamage(int totalDamage, bool hasReduce = true, Weapon weaponUsed = null)
     {
+        int damageToPart = hasReduce
+            ? Mathf.RoundToInt(totalDamage * damageToPartRatio)
+            : Mathf.RoundToInt(totalDamage);
 
-        int damageToPart = 0;
+        int beforeHealth = health;
+        health = Mathf.Max(0, health - damageToPart);
 
-        if (hasReduce)
-        {
-            damageToPart = Mathf.RoundToInt(totalDamage * damageToPartRatio);
-        }
-        else
-        {
-            damageToPart = Mathf.RoundToInt(totalDamage);
-        }
+        Debug.Log($"💥 [Damage {totalDamage}] {type} took {damageToPart} damage. HP: {beforeHealth} → {health}");
 
-        int beforeHealth = this.health;
-        this.health -= damageToPart;
-
-        if (health < 0) health = 0;
-
-        // 🧠 Debug log
-        Debug.Log($"💥 [Damage{totalDamage}] {type} took {damageToPart} damage. HP: {beforeHealth} → {health}");
-
-        // Check for destruction
         if (IsDestroyed && becomesWeakPointWhenDestroyed)
         {
             if (linkedWeakPoint != null)
             {
-                linkedWeakPoint.isExposed = true;
                 Debug.Log($"⚠️ [BodyPart] {type} destroyed — weak point '{linkedWeakPoint.weakPointName}' is now exposed.");
+            }
+
+            if (weaponUsed != null && weaponUsed.weakPointType != null)
+            {
+                linkedWeakPoint = ScriptableObject.Instantiate(weaponUsed.weakPointType);
+                Debug.Log($"🔄 Assigned new weak point from weapon: {linkedWeakPoint.weakPointName}");
             }
         }
     }
+
+    public void EquipArmorTo(Character character)
+    {
+        if (equippedArmor == null || equippedArmor.itemBehaviorPrefab == null)
+            return;
+
+        GameObject instance = Instantiate(equippedArmor.itemBehaviorPrefab, character.transform);
+
+        foreach (var component in instance.GetComponents<MonoBehaviour>())
+        {
+            character.runtimePassiveBehaviors.Add(component);
+
+            if (component is IPassiveItem passive)
+                passive.ApplyEffect(character);
+        }
+
+        Debug.Log($"✅ Equipped armor with behavior: {equippedArmor.armorName}");
+    }
+
+    public bool TryEquipArmor(ArmorData armor)
+    {
+        if (armor == null)
+            return false;
+
+        if (!armor.compatibleBodyParts.Contains(type))
+        {
+            Debug.LogWarning($"❌ Cannot equip {armor.armorName} to {type}: incompatible slot.");
+            return false;
+        }
+
+        equippedArmor = armor;
+        Debug.Log($"✅ {armor.armorName} equipped to {type}.");
+        return true;
+    }
+
 
 
 }

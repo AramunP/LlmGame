@@ -6,9 +6,17 @@ public class ArmorData : ScriptableObject
 {
     [Header("General Armor Stats")]
     public string armorName;
-    public float reducePotentialDamage;  // Reduces potential multiplier
-    public float reduceFeasibility;      // Reduces feasibility multiplier
+    [TextArea]
     public string description;
+    public ItemRarity rarity;
+    public int value;
+
+    [Header("Slot Compatibility")]
+    public List<BodyPartType> compatibleBodyParts; // ✅ NEW FIELD
+
+    [Header("Stat Reductions")]
+    public float reducePotentialDamage;
+    public float reduceFeasibility;
 
     [Header("DamageType Reduction")]
     public int reduceDamagePhysical;
@@ -21,6 +29,8 @@ public class ArmorData : ScriptableObject
     public int reduceDamageLaser;
     public int reduceDamageChemical;
     public int reduceDamageViral;
+    public List<DamageType> damageTypeReduce;
 
-    public List<DamageType> damageTypeReduce; // Used for UI/display, optional for logic
+    [Header("Item Logic (Passive/Active)")]
+    public GameObject itemBehaviorPrefab;
 }

@@ -4,7 +4,9 @@ using UnityEngine;
 using System.Text;
 using System.Linq;
 using TMPro;
-using UnityEditor.Search;
+using System.Text.RegularExpressions; // Make sure this is at the top
+using Map;
+using UnityEngine.SceneManagement;
 
 public class BattleManager : MonoBehaviour
 {
@@ -15,6 +17,23 @@ public class BattleManager : MonoBehaviour
     [SerializeField] public CharacterCombatHandler combatHandler;
     [SerializeField] public DamageCalculator damageCalculator;
     [SerializeField] public TMP_InputField playerInputField;
+
+    [System.Serializable]
+    public class EnemyGroup
+    {
+        public List<GameObject> enemies = new List<GameObject>();
+    }
+
+    [Header("Enemy Pools")]
+    public List<EnemyGroup> minorEasyGroups = new List<EnemyGroup>();
+    public List<EnemyGroup> minorNormalGroups = new List<EnemyGroup>();
+    public List<EnemyGroup> minorHardGroups = new List<EnemyGroup>();
+    public List<EnemyGroup> eliteEasyGroups = new List<EnemyGroup>();
+    public List<EnemyGroup> eliteHardGroups = new List<EnemyGroup>();
+    public List<EnemyGroup> bossEnemyGroups = new List<EnemyGroup>();
+
+    [Header("Enemy Spawn Points")]
+    [SerializeField] public Transform[] enemySpawnPoints = new Transform[3];
 
     [Header("Show Debug")]
     [SerializeField] public bool showDebug;
@@ -41,15 +60,66 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         player.turnGauge = 0f;
+        allCharacters.Clear();
         allCharacters.Add(player);
 
-        foreach (var e in enemies)
+        SpawnEnemyForCurrentNode();
+    }
+
+    private void SpawnEnemyForCurrentNode()
+    {
+        enemies.Clear();
+        if (PlayerData.Instance == null) return;
+
+        EnemyGroup group = GetRandomEnemyGroup(PlayerData.Instance.nextNodeType, PlayerData.Instance.nextEnemyDifficulty);
+        if (group == null || group.enemies == null) return;
+
+        int spawnCount = Mathf.Min(group.enemies.Count, enemySpawnPoints.Length);
+        for (int i = 0; i < spawnCount; i++)
         {
-            e.turnGauge = 0f;
-            allCharacters.Add(e);
+            GameObject prefab = group.enemies[i];
+            if (prefab == null) continue;
+
+            Transform spawnPoint = enemySpawnPoints != null && i < enemySpawnPoints.Length ? enemySpawnPoints[i] : null;
+            GameObject enemyObj = spawnPoint != null
+                ? Instantiate(prefab, spawnPoint.position, spawnPoint.rotation)
+                : Instantiate(prefab);
+
+            Enemy enemy = enemyObj.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                enemy.turnGauge = 0f;
+                enemies.Add(enemy);
+                allCharacters.Add(enemy);
+            }
+        }
+    }
+
+    private EnemyGroup GetRandomEnemyGroup(NodeType type, EnemyDifficulty difficulty)
+    {
+        List<EnemyGroup> pool = null;
+        switch (type)
+        {
+            case NodeType.MinorEnemy:
+                pool = difficulty switch
+                {
+                    EnemyDifficulty.Easy => minorEasyGroups,
+                    EnemyDifficulty.Normal => minorNormalGroups,
+                    EnemyDifficulty.Hard => minorHardGroups,
+                    _ => minorEasyGroups
+                };
+                break;
+            case NodeType.EliteEnemy:
+                pool = difficulty == EnemyDifficulty.Easy ? eliteEasyGroups : eliteHardGroups;
+                break;
+            case NodeType.Boss:
+                pool = bossEnemyGroups;
+                break;
         }
 
-
+        if (pool == null || pool.Count == 0) return null;
+        int index = Random.Range(0, pool.Count);
+        return pool[index];
     }
 
     private void Update()
@@ -77,8 +147,18 @@ public class BattleManager : MonoBehaviour
                 isActionPhase = true;
                 character.turnGauge = 0f;
 
+                foreach (var ticker in character.GetComponentsInChildren<ITurnListener>())
+                {
+                    ticker.OnTurnStart(character);
+                }
+
                 // ⬇️ Process status effects BEFORE they take their action
                 character.ProcessStatusEffects();
+
+                foreach (var ticker in character.GetComponentsInChildren<ITurnListener>())
+                {
+                    ticker.OnTurnEnd(character);
+                }
 
                 // ⬇️ If stunned, skip action
                 if (character.HasStatusEffect(StatusEffectType.Stun))
@@ -99,7 +179,6 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-
     private IEnumerator DoAction(Character character)
     {
         Debug.Log($"=== {character.characterName}'s Turn ===");
@@ -113,22 +192,68 @@ public class BattleManager : MonoBehaviour
             chatAI.ShowInputUI();
             yield break;
         }
-        else if (character is Enemy enemy)
+
+        if (character is Enemy enemy)
         {
+            if (enemy.availableActions == null || enemy.availableActions.Count == 0)
+            {
+                Debug.LogWarning($"{enemy.characterName} has no available actions.");
+                yield break;
+            }
+
+            enemy.selectedAction = enemy.availableActions[0];
+            if (enemy.selectedAction == null)
+            {
+                Debug.LogError($"{enemy.characterName} has a null selectedAction.");
+                yield break;
+            }
+
+            // ✅ Check if enemy should use a consumable instead of attack
+            if (CheckAndActivateEnemyItems(enemy, enemy.selectedAction.actionName, out IEnumerator consumeRoutine))
+            {
+                yield return StartCoroutine(consumeRoutine); // ✅ Use consumable
+                yield break; // ✅ End turn, skip attack
+            }
+
+            // 🎯 Perform normal attack
             Character target = GetRandomOpponent(enemy);
             if (target != null)
             {
-                enemy.selectedAction = enemy.availableActions[0];
-
-                CheckAndActivateEnemyItems(enemy, enemy.selectedAction.actionName);
-                CheckAndActivateDefensiveItems(enemy, target);
-
                 Debug.Log($"Enemy {enemy.characterName} chosen action: {enemy.selectedAction.actionName}");
-
                 combatHandler.EnemyAttack(enemy, target, enemy.selectedAction);
             }
         }
     }
+
+    /*
+    private Character GetLowestHPTargetInTeam(Enemy user)
+    {
+        List<Character> allies = GetAlliesOf(user);
+
+        Character lowest = null;
+        int lowestHP = int.MaxValue;
+
+        foreach (var ally in allies)
+        {
+            if (ally.IsAlive() && ally.currentHP < ally.maxHP && ally.currentHP < lowestHP)
+            {
+                lowestHP = ally.currentHP;
+                lowest = ally;
+            }
+        }
+
+        return lowest;
+    }
+
+    // Replace with your actual method to get allies of a character
+    private List<Character> GetAlliesOf(Character character)
+    {
+        return allCharacters.FindAll(c =>
+            c.characterType == character.characterType &&
+            c.IsAlive());
+    }
+    */
+
 
     public Character GetRandomOpponent(Character self)
     {
@@ -183,107 +308,89 @@ public class BattleManager : MonoBehaviour
         return enemy.actions[randomIndex];
     }
 
-    private void CheckAndActivateEnemyItems(Enemy enemy, string enemyAction)
+    private bool CheckAndActivateEnemyItems(Enemy enemy, string enemyAction, out IEnumerator consumeRoutine)
     {
         string lowerAction = enemyAction.ToLower();
 
-        foreach (var item in enemy.inventoryItems)
-        {
-            item.isActive = false;
-        }
-
         enemy.activeItem.Clear();
+        consumeRoutine = null;
 
+        // 🔁 Reset activation states
+        foreach (var item in enemy.inventoryItems)
+            item.isActive = false;
+
+        // ✅ Weapon activation
+        ProcessWeaponForActivation(enemy.leftHandWeapon, lowerAction, enemy);
+        ProcessWeaponForActivation(enemy.rightHandWeapon, lowerAction, enemy);
+
+        // ✅ Optional: Activate items based on keywords
         foreach (var item in enemy.inventoryItems)
         {
-            bool keywordFound = false;
-            foreach (string keyword in item.keyWords)
+            if (item == null || item.keyWords == null) continue;
+
+            if (item is ConsumeTurnItem consumeItem)
             {
-                if (!string.IsNullOrEmpty(keyword) && lowerAction.Contains(keyword.ToLower()))
+                foreach (string keyword in item.keyWords)
                 {
+                    string lowerKeyword = keyword.ToLower();
+
+                    Character healTarget = enemy;
                     item.isActive = true;
-                    keywordFound = true;
                     enemy.activeItem.Add(item);
 
-                    Debug.Log($"Enemy item '{item.itemName}' activated by keyword: '{keyword}' from action: '{enemyAction}'");
-                    break;
-                }
-            }
+                    enemy.isUsingConsumeTurnItem = true;
 
-            if (!keywordFound)
-            {
-                Debug.Log($"Enemy item '{item.itemName}' remains inactive - no keywords matched");
+                    if (healTarget != null)
+                    {
+                        Debug.Log($"Enemy {enemy.characterName} will use {consumeItem.itemName} on {healTarget.characterName}");
+                        consumeRoutine = consumeItem.UseOnTarget(enemy, healTarget, this);
+                        return true;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("No valid heal target found.");
+                    }
+
+                    return true;
+                }
             }
         }
 
-        Debug.Log($"Total enemy active items: {enemy.activeItem.Count}");
+
+        return false; // No matching item to consume
     }
 
-    public void CheckAndActivateDefensiveItems(Character attacker, Character target)
+    private void ProcessWeaponForActivation(Weapon weapon, string lowerAction, Enemy enemy)
     {
-        HashSet<DamageType> incomingDamageTypes = new HashSet<DamageType>();
+        if (weapon == null || enemy == null)
+            return;
 
-        // ✅ 1. Check if a skill is active
-        if (attacker.currentSkill is DamageModifierSkill skill && skill.damageTypes != null && skill.damageTypes.Count > 0)
-        {
-            foreach (var dt in skill.damageTypes)
-            {
-                incomingDamageTypes.Add(dt);
-            }
+        // Extract words from the action string
+        var actionWords = Regex.Matches(lowerAction, @"\b\w+\b")
+                               .Cast<Match>()
+                               .Select(m => m.Value.ToLower())
+                               .ToHashSet(); // For fast keyword lookup
 
-            Debug.Log($"[Defensive] Using skill '{skill.skillName}' with damage types: {string.Join(", ", skill.damageTypes)}");
-        }
-        else
+        bool keywordFound = false;
+
+        foreach (string keyword in weapon.keyWords)
         {
-            // ✅ 2. Fallback to weapon items in activeItem
-            foreach (var weaponItem in attacker.activeItem)
+            if (!string.IsNullOrWhiteSpace(keyword) && actionWords.Contains(keyword.ToLower()))
             {
-                if (weaponItem is Weapon weapon)
+                if (!keywordFound)
                 {
-                    foreach (var dt in weapon.damageType)
-                    {
-                        incomingDamageTypes.Add(dt);
-                    }
+                    weapon.isActive = true;
+                    enemy.activeItem.Add(weapon);
+                    keywordFound = true;
                 }
-            }
 
-            if (incomingDamageTypes.Count == 0)
-            {
-                incomingDamageTypes.Add(DamageType.Physical);
-                Debug.Log("No damage types detected. Defaulting to Physical damage.");
+                Debug.Log($"Sub_Weapon '{weapon.itemName}' activated by keyword: '{keyword}' from action: '{lowerAction}'");
             }
         }
 
-        Debug.Log($"Incoming damage types: {string.Join(", ", incomingDamageTypes.Select(t => t.ToString()))}");
-
-        // ✅ 3. Clear previously active defensive items
-        target.activeItem.RemoveAll(item => item is Defensive);
-
-        // ✅ 4. Evaluate defensive items
-        foreach (var item in target.inventoryItems)
+        if (!keywordFound)
         {
-            if (item is Defensive defensive)
-            {
-                defensive.isActive = false; // Reset before checking
-
-                bool hasMatchingType = defensive.damageTypeReduce.Any(dt => incomingDamageTypes.Contains(dt));
-
-                if (hasMatchingType)
-                {
-                    defensive.isActive = true;
-
-                    if (!target.activeItem.Contains(defensive))
-                    {
-                        target.activeItem.Add(defensive);
-                    }
-
-                    Debug.Log($"🛡️ Defensive item '{defensive.itemName}' activated! Matches: {string.Join(", ", defensive.damageTypeReduce)}");
-                }
-                else
-                {
-                    Debug.Log($"⚠️ Defensive item '{defensive.itemName}' did not match any damage types.");
-                }
-            }
+            Debug.Log($"Sub_Weapon '{weapon.itemName}' remains inactive - no keywords matched");
         }
     }
 
@@ -297,6 +404,7 @@ public class BattleManager : MonoBehaviour
         if (!player.IsAlive())
         {
             Debug.Log("Player Defeated!");
+            SceneManager.LoadScene("GameOver");
             return true;
         }
 
@@ -304,6 +412,7 @@ public class BattleManager : MonoBehaviour
         if (!anyEnemyAlive)
         {
             Debug.Log("All Enemies Defeated!");
+            SceneManager.LoadScene("MapGenerate");
         }
 
         return !anyEnemyAlive;
@@ -352,9 +461,18 @@ public class BattleManager : MonoBehaviour
         character.animationFinished = false;
         character.animator.SetTrigger(animationTriggerName);
 
-        while (!character.animationFinished)
+        float timeout = 3f;
+        float timer = 0f;
+
+        while (!character.animationFinished && timer < timeout)
         {
+            timer += Time.deltaTime;
             yield return null;
+        }
+
+        if (!character.animationFinished)
+        {
+            Debug.LogWarning($"Animation '{animationTriggerName}' for {character.characterName} timed out!");
         }
     }
 

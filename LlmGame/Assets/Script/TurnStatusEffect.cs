@@ -7,13 +7,22 @@ public class TurnStatusEffect
 {
     public StatusEffectType effectType;
     public int remainingTurns;
-    public int magnitude; // Use this for stat debuffs
+    public int magnitude;
+
+    public Character source; // ✅ New field
+
     public bool isApplied = false;
 
-    public TurnStatusEffect(StatusEffectType type, int turns, int value = 0)
+    // Marks effects that should never expire or be removed
+    public bool isPermanent = false;
+
+    public TurnStatusEffect(StatusEffectType type, int duration, int magnitude, Character source = null, bool isPermanent = false)
     {
-        effectType = type;
-        remainingTurns = turns;
-        magnitude = value;
+        this.effectType = type;
+        this.remainingTurns = duration;
+        this.magnitude = magnitude;
+        this.source = source;
+        this.isPermanent = isPermanent;
     }
 }
+

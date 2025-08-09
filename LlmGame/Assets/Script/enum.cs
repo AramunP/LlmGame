@@ -7,6 +7,19 @@ public enum ItemType
     Other
 }
 
+public enum ItemRarity
+{
+    Common,
+    Rare,
+    Epic
+}
+
+public enum WeaponType
+{
+    Melee_Weapon,
+    Ranged_Weapon
+}
+
 public enum UsageType
 {
     OneTime,
@@ -20,16 +33,13 @@ public enum DamageType
     Electric,       // Shock batons, taser darts, EMP grenades
     Radiation,      // Dirty energy weapons, nuclear micro-explosives
     Explosive,      // Grenades, rocket launchers
-    Digital,        // Direct neural interface attacks (hacking a cyberbrain)
     Plasma,         // High-energy plasma weapons
-    Laser,          // Laser rifles, cutting beams
-    Chemical,       // Gas attacks, chemical bombs
+    Poison,       // Gas attacks, chemical bombs
     Viral,          // Digital viruses that affect both tech and biology
 }
 
 public enum CharacterType
 {
-    Cyborg,
     Android,
     Human
 }
@@ -42,9 +52,6 @@ public enum BodyPartType
     RightArm,
     LeftLeg,
     RightLeg,
-    LeftEye,
-    RightEye,
-    Heart
 }
 
 public enum BodyPartState
@@ -71,10 +78,32 @@ public class StatusEffect
 public enum StatusEffectType
 {
     Stun,
-    Shock,
-    Flame,
     DefenseDown,
     AttackDown,
     FocusDown,
-    Custom // Add more as needed
+    Bleed,
+    Poison,
+    Radiation,
+    Contaminated,
+    AttackUp,
+    DefenseUp,
+    SpeedUp,
+    CritChanceUp,
+    CritDamageUp,
+    HealReduction // ✅ Let compiler assign next value
+}
+
+public enum StatusChanceType
+{
+    Bleed,
+    Poison,
+    Stun,
+    Critical
+}
+
+public enum EnemyDifficulty
+{
+    Easy,
+    Normal,
+    Hard
 }

@@ -11,13 +11,27 @@ public class Weapon : Item
     public int damageElectric;       // Shock batons; taser darts; EMP grenades
     public int damageRadiation;      // Dirty energy weapons; nuclear micro-explosives
     public int damageExplosive;      // Grenades; rocket launchers
-    public int damageDigital;        // Direct neural interface attacks (hacking a cyberbrain)
     public int damagePlasma;         // High-energy plasma weapons
     public int damageLaser;          // Laser rifles; cutting beams
     public int damageChemical;       // Gas attacks; chemical bombs
     public int damageViral;          // Digital viruses that affect both tech and biology
 
+    [Header("TwoHand Weapon")]
+    public bool isTwoHandWeapon;
+
     [Header("DamageType")]
     public List<DamageType> damageType;
+
+    [Header("WeaponType")]
+    public WeaponType weaponType;   //    Melee_Weapon, Range_Weapon
+
+    [Header("Weak Point")]
+    public WeakPointData weakPointType;
+
+    [Header("Status Effect Chances")]
+    [Range(0f, 1f)] public float bleedChance;
+    [Range(0f, 1f)] public float poisonChance;
+    [Range(0f, 1f)] public float stunChance;
+    [Range(0f, 1f)] public float criticalChance;
 
 }
