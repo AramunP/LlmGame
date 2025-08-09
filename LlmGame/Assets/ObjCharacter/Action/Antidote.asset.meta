@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Action/Antidote.asset.meta
 guid: bacaa1c7b2d4c6b4a95770244dd0eecd
+========
+guid: c0fdf94b7bf3c8544837148286b22ecc
+>>>>>>>> main:LlmGame/Assets/ObjCharacter/Armor/BiohazardReactor/BiohazardReactor.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

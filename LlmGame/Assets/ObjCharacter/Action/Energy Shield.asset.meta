@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Action/Energy Shield.asset.meta
 guid: a1022bfd053e447458174a55d8c87f3e
+========
+guid: bacaa1c7b2d4c6b4a95770244dd0eecd
+>>>>>>>> main:LlmGame/Assets/ObjCharacter/Action/Antidote.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

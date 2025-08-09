@@ -1,5 +1,6 @@
 { "cat":"", "pid":12345, "tid":0, "ts":0, "ph":"M", "name":"process_name", "args": { "name":"bee_backend" } }
 <<<<<<< HEAD
+<<<<<<< HEAD
 ,{ "pid":12345, "tid":0, "ts":1753681869880080, "dur":128, "ph":"X", "name": "IPC_Client_InitializeAndConnectToParent",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":0, "ts":1753681869880239, "dur":46459, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":0, "ts":1753681869926703, "dur":25804, "ph":"X", "name": "RemoveStaleOutputs",  "args": { "detail":"" }}
@@ -4876,6 +4877,8 @@
 ,{ "pid":12345, "tid":24, "ts":1753681886481340, "dur":271633, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":0, "ts":1753681886761670, "dur":14445, "ph":"X", "name": "ProfilerWriteOutput" }
 =======
+=======
+>>>>>>> main
 ,{ "pid":12345, "tid":0, "ts":1754723222882134, "dur":79, "ph":"X", "name": "IPC_Client_InitializeAndConnectToParent",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":0, "ts":1754723222882259, "dur":47414, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":0, "ts":1754723222929679, "dur":187, "ph":"X", "name": "RemoveStaleOutputs",  "args": { "detail":"" }}
@@ -5626,5 +5629,8 @@
 ,{ "pid":12345, "tid":16, "ts":1754723222958474, "dur":447297, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":16, "ts":1754723223405771, "dur":526699, "ph":"X", "name": "WaitingForWork", "cname":"thread_state_sleeping",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":0, "ts":1754723223940214, "dur":3675, "ph":"X", "name": "ProfilerWriteOutput" }
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 ,
