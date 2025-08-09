@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/Tactical Visor/TacticalVisor.asset.meta
 guid: 9381a5ba643cf4f4c9a0f2ab35c9b29f
+========
+guid: bacaa1c7b2d4c6b4a95770244dd0eecd
+>>>>>>>> main:LlmGame/Assets/ObjCharacter/Action/Antidote.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

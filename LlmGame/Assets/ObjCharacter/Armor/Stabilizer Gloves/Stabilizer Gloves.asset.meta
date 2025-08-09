@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/Stabilizer Gloves/Stabilizer Gloves.asset.meta
 guid: b914af6eeec9dc8459b7a4eddda270aa
+========
+guid: c0fdf94b7bf3c8544837148286b22ecc
+>>>>>>>> main:LlmGame/Assets/ObjCharacter/Armor/BiohazardReactor/BiohazardReactor.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

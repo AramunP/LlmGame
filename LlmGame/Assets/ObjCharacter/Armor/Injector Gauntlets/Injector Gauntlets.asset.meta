@@ -1,9 +1,13 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 <<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/Injector Gauntlets/Injector Gauntlets.asset.meta
 guid: e5d2822cc3f82d349bde8d8246c3aa63
 ========
 guid: c0fdf94b7bf3c8544837148286b22ecc
 >>>>>>>> main:LlmGame/Assets/ObjCharacter/Armor/BiohazardReactor/BiohazardReactor.asset.meta
+=======
+guid: e5d2822cc3f82d349bde8d8246c3aa63
+>>>>>>> main
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000

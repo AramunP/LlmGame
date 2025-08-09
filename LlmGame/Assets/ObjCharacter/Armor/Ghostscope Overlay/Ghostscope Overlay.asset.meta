@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/Ghostscope Overlay/Ghostscope Overlay.asset.meta
 guid: 21f6e8de8b2fe2246b283e1b466fdd2a
 ========
 guid: c0fdf94b7bf3c8544837148286b22ecc
 >>>>>>>> main:LlmGame/Assets/ObjCharacter/Armor/BiohazardReactor/BiohazardReactor.asset.meta
+=======
+guid: 21f6e8de8b2fe2246b283e1b466fdd2a
+>>>>>>> main
 =======
 guid: 21f6e8de8b2fe2246b283e1b466fdd2a
 >>>>>>> main

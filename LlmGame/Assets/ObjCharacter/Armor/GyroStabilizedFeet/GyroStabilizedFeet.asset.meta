@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/GyroStabilizedFeet/GyroStabilizedFeet.asset.meta
 guid: df8a1b44e7b39814eb684bc1b8b4b98a
 ========
 guid: bacaa1c7b2d4c6b4a95770244dd0eecd
 >>>>>>>> main:LlmGame/Assets/ObjCharacter/Action/Antidote.asset.meta
+=======
+guid: df8a1b44e7b39814eb684bc1b8b4b98a
+>>>>>>> main
 =======
 guid: df8a1b44e7b39814eb684bc1b8b4b98a
 >>>>>>> main
