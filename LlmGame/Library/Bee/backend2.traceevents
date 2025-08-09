@@ -3,6 +3,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 ,{ "pid":12345, "tid":0, "ts":1753681869880080, "dur":128, "ph":"X", "name": "IPC_Client_InitializeAndConnectToParent",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":0, "ts":1753681869880239, "dur":46459, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":0, "ts":1753681869926703, "dur":25804, "ph":"X", "name": "RemoveStaleOutputs",  "args": { "detail":"" }}
@@ -4885,6 +4886,8 @@
 >>>>>>> main
 =======
 >>>>>>> main
+=======
+>>>>>>> main
 ,{ "pid":12345, "tid":0, "ts":1754723222882134, "dur":79, "ph":"X", "name": "IPC_Client_InitializeAndConnectToParent",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":0, "ts":1754723222882259, "dur":47414, "ph":"X", "name": "DriverInitData",  "args": { "detail":"" }}
 ,{ "pid":12345, "tid":0, "ts":1754723222929679, "dur":187, "ph":"X", "name": "RemoveStaleOutputs",  "args": { "detail":"" }}
@@ -5638,6 +5641,9 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main

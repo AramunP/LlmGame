@@ -1,5 +1,6 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/Auto-Injector Arms/Auto-Injector Arms.asset.meta
 guid: 54f02d278d7cfaa419f31c1ab90a3a26
 ========
@@ -8,6 +9,13 @@ guid: c0fdf94b7bf3c8544837148286b22ecc
 =======
 <<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/HawkEyeLens/HawkEyeLens.asset.meta
 guid: bb47331ca30d9fd4fa8711e1c8796b39
+========
+guid: 54f02d278d7cfaa419f31c1ab90a3a26
+>>>>>>>> main:LlmGame/Assets/ObjCharacter/Armor/Auto-Injector Arms/Auto-Injector Arms.asset.meta
+>>>>>>> main
+=======
+<<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/RecoilStabilizers/Recoil Stabilizer.asset.meta
+guid: 28c1d588744812b4c99be3b67f721646
 ========
 guid: 54f02d278d7cfaa419f31c1ab90a3a26
 >>>>>>>> main:LlmGame/Assets/ObjCharacter/Armor/Auto-Injector Arms/Auto-Injector Arms.asset.meta

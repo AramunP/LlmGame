@@ -23,7 +23,11 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Title: Project
+=======
+  m_Title: Inspector
+>>>>>>> main
 =======
   m_Title: Inspector
 >>>>>>> main
@@ -139,7 +143,11 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   controlID: 53
+=======
+  controlID: 123
+>>>>>>> main
 =======
   controlID: 123
 >>>>>>> main
@@ -176,12 +184,21 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 1706.6666
     height: 550
   m_MinSize: {x: 300, y: 50}
   m_MaxSize: {x: 24288, y: 8096}
   vertical: 0
   controlID: 54
+=======
+    width: 1536
+    height: 444
+  m_MinSize: {x: 300, y: 50}
+  m_MaxSize: {x: 24288, y: 8096}
+  vertical: 0
+  controlID: 124
+>>>>>>> main
 =======
     width: 1536
     height: 444
@@ -235,8 +252,13 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     width: 248
     height: 550
+=======
+    width: 264
+    height: 444
+>>>>>>> main
 =======
     width: 264
     height: 444
@@ -279,10 +301,17 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 248
     y: 0
     width: 1046.6666
     height: 550
+=======
+    x: 264
+    y: 0
+    width: 820
+    height: 444
+>>>>>>> main
 =======
     x: 264
     y: 0
@@ -316,9 +345,12 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_Selected: 0
   m_LastSelected: 1
 =======
+=======
+>>>>>>> main
 =======
 >>>>>>> main
 =======
@@ -349,6 +381,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1294.6666
     y: 0
     width: 412
@@ -371,6 +404,10 @@ MonoBehaviour:
     x: 1084
     y: 0
 >>>>>>> main
+=======
+    x: 1084
+    y: 0
+>>>>>>> main
     width: 452
     height: 444
   m_MinSize: {x: 275, y: 100}
@@ -379,6 +416,9 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main
@@ -411,9 +451,15 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     y: 550
     width: 1706.6666
     height: 269.3333
+=======
+    y: 444
+    width: 1536
+    height: 278.8
+>>>>>>> main
 =======
     y: 444
     width: 1536
@@ -676,11 +722,14 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 248
     y: 72.66667
     width: 1044.6666
     height: 529
 =======
+=======
+>>>>>>> main
 =======
 >>>>>>> main
 =======
@@ -694,6 +743,9 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main
@@ -1128,9 +1180,15 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: -5.5411, y: -1.3583587, z: 30.257942}
     speed: 2
     m_Value: {x: -5.5411, y: -1.3583587, z: 30.257942}
+=======
+    m_Target: {x: 0, y: 0, z: 0}
+    speed: 2
+    m_Value: {x: 0, y: 0, z: 0}
+>>>>>>> main
 =======
     m_Target: {x: 0, y: 0, z: 0}
     speed: 2
@@ -1200,6 +1258,7 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     m_Target: {x: -0.049218547, y: 0.014850817, z: -0.00091358845, w: -0.99938375}
     speed: 2
     m_Value: {x: -0.049218547, y: 0.014850817, z: -0.00091358845, w: -0.9993838}
@@ -1207,6 +1266,15 @@ MonoBehaviour:
     m_Target: 3.1015449
     speed: 2
     m_Value: 3.1015449
+=======
+    m_Target: {x: 0.08693864, y: 0.01403073, z: 0.001149311, w: -0.9968883}
+    speed: 2
+    m_Value: {x: 0.08687166, y: 0.0140199205, z: 0.0011484255, w: -0.9961202}
+  m_Size:
+    m_Target: 7.2447534
+    speed: 2
+    m_Value: 7.2447534
+>>>>>>> main
 =======
     m_Target: {x: 0.08693864, y: 0.01403073, z: 0.001149311, w: -0.9968883}
     speed: 2
@@ -1267,6 +1335,7 @@ MonoBehaviour:
   m_SceneVisActive: 1
   m_LastLockedObject: {fileID: 0}
   m_ViewIsLockedToObject: 0
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1429,6 +1498,8 @@ MonoBehaviour:
 >>>>>>> main
 =======
 >>>>>>> main
+=======
+>>>>>>> main
 --- !u!114 &14
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1453,11 +1524,14 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 248
     y: 72.66667
     width: 1044.6666
     height: 529
 =======
+=======
+>>>>>>> main
 =======
 >>>>>>> main
 =======
@@ -1471,6 +1545,9 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main
@@ -1536,11 +1613,14 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       width: 1044.6666
       height: 508
     m_Scale: {x: 0.70555556, y: 0.70555556}
     m_Translation: {x: 522.3333, y: 254}
 =======
+=======
+>>>>>>> main
 =======
 >>>>>>> main
 =======
@@ -1554,6 +1634,9 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main
@@ -1567,6 +1650,7 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1585,6 +1669,8 @@ MonoBehaviour:
 >>>>>>> main
 =======
 >>>>>>> main
+=======
+>>>>>>> main
       x: -879.04474
       y: -432
       width: 1758.0895
@@ -1595,6 +1681,9 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main
@@ -1718,11 +1807,14 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     x: 1294.6667
     y: 72.66667
     width: 411
     height: 529
 =======
+=======
+>>>>>>> main
 =======
 >>>>>>> main
 =======
@@ -1736,6 +1828,9 @@ MonoBehaviour:
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> main
+=======
 >>>>>>> main
 =======
 >>>>>>> main
@@ -1800,6 +1895,7 @@ MonoBehaviour:
     m_LastAppliedPresetName: Default
     m_SaveData: []
     m_OverlaysVisible: 1
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -1950,6 +2046,8 @@ MonoBehaviour:
     m_GridSize: 57
   m_SkipHiddenPackages: 1
   m_DirectoriesAreaWidth: 200.00003
+=======
+>>>>>>> main
 =======
 >>>>>>> main
 =======

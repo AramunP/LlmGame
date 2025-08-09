@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:LlmGame/Assets/ObjCharacter/Armor/Precision Arms/Precision Arms.asset.meta
 guid: 5cd5ac374712b454189efbc531dd79b8
+========
+guid: bacaa1c7b2d4c6b4a95770244dd0eecd
+>>>>>>>> main:LlmGame/Assets/ObjCharacter/Action/Antidote.asset.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 11400000
